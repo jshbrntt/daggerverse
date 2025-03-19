@@ -42,7 +42,8 @@ func (m *Examples) K3S(ctx context.Context) (string, error) {
 		WithEnvVariable("KUBECONFIG", "/.kube/config").
 		WithFile("/.kube/config", k3s.Config()).
 		WithExec([]string{"helm", "install", "--wait", "--debug", "nginx", "oci://registry-1.docker.io/bitnamicharts/nginx"}).
-		WithExec([]string{"curl", "-sS", ep}).Stdout(ctx)
+		WithExec([]string{"curl", "-sS", ep}).
+		Terminal().Stdout(ctx)
 
 }
 
